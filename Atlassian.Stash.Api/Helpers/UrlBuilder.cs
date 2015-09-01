@@ -42,7 +42,7 @@ namespace Atlassian.Stash.Api.Helpers
 
             return resultingUrl;
         }
-
+        
         private static void StringParamsValidator(int validParamCount, params string[] inputs)
         {
             if (inputs.Length != validParamCount || inputs.Any(x => string.IsNullOrWhiteSpace(x)))

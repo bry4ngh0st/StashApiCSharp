@@ -29,6 +29,31 @@ namespace Atlassian.Stash.Api.Api
             return response;
         }
 
+        public async Task<ResponseWrapper<Branch>> GetFiltered(string projectKey, string repositorySlug, BranchRequestOptions branchRequestOptions)
+        {
+            var requestOptions = new RequestOptions
+            {
+                At = branchRequestOptions.At,
+                Limit = branchRequestOptions.Limit,
+                Start = branchRequestOptions.Start
+            };
+
+            var requestUrl = UrlBuilder.FormatRestApiUrl(MANY_BRANCHES, requestOptions, projectKey, repositorySlug);
+
+            var urlHasParams = requestUrl.IndexOf('?') > -1;
+
+            var branchOptions = string.Empty;
+
+            if (!string.IsNullOrEmpty(branchRequestOptions.FilterText))
+                branchOptions = string.Format("filterText={0}&", branchRequestOptions.FilterText);
+
+            branchOptions += string.Format("orderBy={0}", branchRequestOptions.OrderBy);
+
+            requestUrl = string.Format("{0}{1}{2}", requestUrl, urlHasParams ? "&" : "?", branchOptions);
+
+            return await _httpWorker.GetAsync<ResponseWrapper<Branch>>(requestUrl).ConfigureAwait(false);
+        }
+
         public async Task<ResponseWrapper<Branch>> GetByCommitId(string projectKey, string repositorySlug, string commitId, RequestOptions requestOptions = null)
         {
             string requestUrl = UrlBuilder.FormatRestApiUrl(BRANCHES_FOR_COMMIT, requestOptions, projectKey, repositorySlug,
