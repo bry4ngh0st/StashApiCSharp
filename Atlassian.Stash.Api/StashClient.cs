@@ -26,6 +26,7 @@ namespace Atlassian.Stash.Api
             this.Branches = new Branches(_httpWorker);
             this.Commits = new Commits(_httpWorker);
             this.PullRequests = new PullRequests(_httpWorker);
+            Permissions = new Permissions(_httpWorker);
         }
 
         public Projects Projects { get; private set; }
@@ -33,6 +34,6 @@ namespace Atlassian.Stash.Api
         public Branches Branches { get; private set; }
         public Commits Commits { get; private set; }
         public PullRequests PullRequests { get; private set; }
-
+        public Permissions Permissions { get; private set; }
     }
 }
