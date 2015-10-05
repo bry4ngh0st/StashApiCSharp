@@ -77,6 +77,9 @@ namespace Atlassian.Stash.Api.Api
         public async Task Delete(string projectKey, string repositorySlug, Branch branch)
         {
             string requestUrl = UrlBuilder.FormatRestApiUrl(MANAGE_BRANCHES, null, projectKey, repositorySlug);
+            
+            branch.DryRun = false;
+            branch.Name = branch.Id;
 
             await _httpWorker.DeleteWithRequestContentAsync(requestUrl, branch).ConfigureAwait(false);
         }
