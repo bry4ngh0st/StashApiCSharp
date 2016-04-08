@@ -57,6 +57,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atlassian.Stash.Api\Atlassian.Stash.Api.csproj">
+      <Project>{60bb1478-e71e-4278-bebe-9769624a7a0a}</Project>
+      <Name>Atlassian.Stash.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
