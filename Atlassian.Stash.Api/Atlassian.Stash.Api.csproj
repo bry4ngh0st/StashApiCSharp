@@ -54,6 +54,7 @@
     <Compile Include="Api\Permissions.cs" />
     <Compile Include="Api\Projects.cs" />
     <Compile Include="Api\PullRequests.cs" />
+    <Compile Include="Api\RepoPermissions.cs" />
     <Compile Include="Api\Repositories.cs" />
     <Compile Include="Entities\ApplicationProperties.cs" />
     <Compile Include="Entities\Author.cs" />
@@ -73,9 +74,11 @@
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Entities\PullRequest.cs" />
     <Compile Include="Entities\Ref.cs" />
+    <Compile Include="Entities\RepoPermission.cs" />
     <Compile Include="Entities\Repository.cs" />
     <Compile Include="Entities\Self.cs" />
     <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Helpers\BranchRequestOptions.cs" />
     <Compile Include="Helpers\UrlBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
